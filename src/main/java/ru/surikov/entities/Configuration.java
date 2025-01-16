@@ -1,18 +1,30 @@
-package ru.surikov;
+package ru.surikov.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Configuration {
 
-    private boolean a;
-    private boolean p;
-    private boolean o;
-    private boolean s;
-    private boolean f;
+    private static boolean a;
+    private static boolean p;
+    private static boolean o;
+    private static boolean s;
+    private static boolean f;
+    private static String savePath;
+    private static String prefix;
+    private static List<String> listFileName;
+    private static Configuration instance;
 
-    private String savePath;
-    private List<String> fileName;
-    private String prefix;
+    public Configuration() {
+        listFileName = new ArrayList<>();
+    }
+
+    public static Configuration getInstance() {
+        if (instance == null) {
+            instance = new Configuration();
+        }
+        return instance;
+    }
 
     public boolean getA() {
         return a;
@@ -63,11 +75,11 @@ public class Configuration {
     }
 
     public List<String> getListOfFileName() {
-        return fileName;
+        return listFileName;
     }
 
     public void addFileName(String fileName) {
-        addFileName(fileName);
+        listFileName.add(fileName);
     }
 
     public String getPrefix() {
@@ -76,5 +88,19 @@ public class Configuration {
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "a=" + a +
+                ", p=" + p +
+                ", o=" + o +
+                ", s=" + s +
+                ", f=" + f +
+                ", savePath='" + savePath + '\'' +
+                ", prefix='" + prefix + '\'' +
+                ", listFileName=" + listFileName +
+                '}';
     }
 }

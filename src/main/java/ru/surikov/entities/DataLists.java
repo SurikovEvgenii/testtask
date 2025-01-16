@@ -1,12 +1,13 @@
-package ru.surikov;
+package ru.surikov.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataLists {
 
-    public static List<String> stringList;
-    public static List<Integer> integerList;
-    public static List<Double> doubleList;
+    public static List<String> stringList = new ArrayList<>();
+    public static List<Integer> integerList = new ArrayList<>();
+    public static List<Double> doubleList = new ArrayList<>();
 
     public static List<String> getStringList() {
         return stringList;
@@ -29,6 +30,6 @@ public class DataLists {
     }
 
     public static void addDataToDoubleList(double data) {
-        doubleList.add(data)
+        doubleList.add(data);
     }
 }
