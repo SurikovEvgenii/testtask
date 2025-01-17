@@ -6,7 +6,7 @@ import java.util.List;
 public class DataLists {
 
     public static List<String> stringList = new ArrayList<>();
-    public static List<Integer> integerList = new ArrayList<>();
+    public static List<Long> longList = new ArrayList<>();
     public static List<Double> doubleList = new ArrayList<>();
 
     public static List<String> getStringList() {
@@ -17,12 +17,12 @@ public class DataLists {
         stringList.add(data);
     }
 
-    public static List<Integer> getIntegerList() {
-        return integerList;
+    public static List<Long> getLongList() {
+        return longList;
     }
 
-    public static void addDataToIntegerList(int data) {
-        integerList.add(data);
+    public static void addDataToLongList(long data) {
+        longList.add(data);
     }
 
     public static List<Double> getDoubleList() {

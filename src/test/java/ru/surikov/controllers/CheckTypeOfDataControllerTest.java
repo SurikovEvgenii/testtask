@@ -21,14 +21,14 @@ public class CheckTypeOfDataControllerTest {
 
     @Test
     void isIntegerTest(){
-        assertEquals(true, checkTypeOfDataController.isInteger("2"));
-        assertEquals(true, checkTypeOfDataController.isInteger("-2"));
-        assertEquals(true, checkTypeOfDataController.isInteger("0"));
-        assertEquals(false, checkTypeOfDataController.isInteger("1.00"));
-        assertEquals(false, checkTypeOfDataController.isInteger("0.00"));
-        assertEquals(false, checkTypeOfDataController.isInteger("-1.000E-10"));
-        assertEquals(false, checkTypeOfDataController.isInteger("String"));
-        assertEquals(false, checkTypeOfDataController.isInteger("String123"));
+        assertEquals(true, checkTypeOfDataController.isLong("2"));
+        assertEquals(true, checkTypeOfDataController.isLong("-2"));
+        assertEquals(true, checkTypeOfDataController.isLong("0"));
+        assertEquals(false, checkTypeOfDataController.isLong("1.00"));
+        assertEquals(false, checkTypeOfDataController.isLong("0.00"));
+        assertEquals(false, checkTypeOfDataController.isLong("-1.000E-10"));
+        assertEquals(false, checkTypeOfDataController.isLong("String"));
+        assertEquals(false, checkTypeOfDataController.isLong("String123"));
     }
 
     @Test

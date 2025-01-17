@@ -5,68 +5,70 @@ import ru.surikov.entities.DataLists;
 
 import java.io.*;
 import java.util.Iterator;
+import java.util.List;
 
 public class FileHandler {
 
-    public void readFile() {
+    public static void readFile(List<String> fileNameList) {
 
-        File file = new File("in1.txt");
+        Iterator<String> iterator = fileNameList.iterator();
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            while (bufferedReader.ready()) {
-                String line = bufferedReader.readLine();
-                    if(CheckTypeOfDataController.isDouble(line)) {
-                        Double doubleData = Double.parseDouble(line);
-                        DataLists.addDataToDoubleList(doubleData);
+        while (iterator.hasNext()) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(iterator.next()))) {
+                while (bufferedReader.ready()) {
+                    String line = bufferedReader.readLine();
+                    if (CheckTypeOfDataController.isDouble(line)) {
+                        DataLists.addDataToDoubleList(Double.parseDouble(line));
                     }
-                    if (CheckTypeOfDataController.isInteger(line)) {
-                        Integer integerData = Integer.parseInt(line);
-                        DataLists.addDataToIntegerList(integerData);
+                    if (CheckTypeOfDataController.isLong(line)) {
+                        DataLists.addDataToLongList(Long.parseLong(line));
                     }
                     if (CheckTypeOfDataController.isString(line)) {
                         DataLists.addDataToStringList(line);
                     }
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found");
+            } catch (IOException e) {
+                System.out.println("Error reading file");
+            } catch (NumberFormatException e) {
+                System.out.println("Error parsing number");
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException(e);
         }
     }
 
-    public void writeFile(String path, String prefix, boolean append) {
+    public static void writeFile(String path, String prefix, boolean append) {
+
         try {
-            if(!DataLists.getDoubleList().isEmpty()) {
+            if (!DataLists.getDoubleList().isEmpty()) {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(prefix + "double.txt", append));
                 Iterator iterator = DataLists.getDoubleList().iterator();
-                while(iterator.hasNext()) {
+                while (iterator.hasNext()) {
                     bufferedWriter.write(iterator.next().toString());
                     bufferedWriter.newLine();
                 }
                 bufferedWriter.flush();
             }
-            if(!DataLists.getIntegerList().isEmpty()) {
+            if (!DataLists.getLongList().isEmpty()) {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(prefix + "integer.txt", append));
-                Iterator iterator = DataLists.getIntegerList().iterator();
-                while(iterator.hasNext()) {
+                Iterator iterator = DataLists.getLongList().iterator();
+                while (iterator.hasNext()) {
                     bufferedWriter.write(iterator.next().toString());
                     bufferedWriter.newLine();
                 }
                 bufferedWriter.flush();
             }
-            if(!DataLists.getStringList().isEmpty()) {
+            if (!DataLists.getStringList().isEmpty()) {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(prefix + "string.txt", append));
                 Iterator iterator = DataLists.getStringList().iterator();
-                while(iterator.hasNext()) {
-                    bufferedWriter.write((String)iterator.next());
+                while (iterator.hasNext()) {
+                    bufferedWriter.write((String) iterator.next());
                     bufferedWriter.newLine();
                 }
                 bufferedWriter.flush();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 

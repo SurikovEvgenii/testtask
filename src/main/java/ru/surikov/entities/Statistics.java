@@ -2,25 +2,18 @@ package ru.surikov.entities;
 
 public class Statistics {
 
-    private static int countIntegerElements;
+    private static int countLongElements;
     private static int countDoubleElements;
     private static int countStringElements;
-    private static int minIntegerElements;
-    private static int maxIntegerElements;
+    private static long minLongElements;
+    private static long maxLongElements;
     private static int minStringLengthElements;
     private static int maxStringLengthElements;
     private static double maxDoubleElements;
     private static double minDoubleElements;
-    private static double avgIntegerElements;
+    private static double avgLongElements;
     private static double avgDoubleElements;
 
-    public static int getCountIntegerElements() {
-        return countIntegerElements;
-    }
-
-    public static void setCountIntegerElements(int countIntegerElements) {
-        Statistics.countIntegerElements = countIntegerElements;
-    }
 
     public static int getCountDoubleElements() {
         return countDoubleElements;
@@ -36,22 +29,6 @@ public class Statistics {
 
     public static void setCountStringElements(int countStringElements) {
         Statistics.countStringElements = countStringElements;
-    }
-
-    public static int getMinIntegerElements() {
-        return minIntegerElements;
-    }
-
-    public static void setMinIntegerElements(int minIntegerElements) {
-        Statistics.minIntegerElements = minIntegerElements;
-    }
-
-    public static int getMaxIntegerElements() {
-        return maxIntegerElements;
-    }
-
-    public static void setMaxIntegerElements(int maxIntegerElements) {
-        Statistics.maxIntegerElements = maxIntegerElements;
     }
 
     public static int getMinStringLengthElements() {
@@ -86,12 +63,12 @@ public class Statistics {
         Statistics.minDoubleElements = minDoubleElements;
     }
 
-    public static double getAvgIntegerElements() {
-        return avgIntegerElements;
+    public static double getAvgLongElements() {
+        return avgLongElements;
     }
 
-    public static void setAvgIntegerElements(double avgIntegerElements) {
-        Statistics.avgIntegerElements = avgIntegerElements;
+    public static void setAvgLongElements(double avgLongElements) {
+        Statistics.avgLongElements = avgLongElements;
     }
 
     public static double getAvgDoubleElements() {
@@ -100,5 +77,29 @@ public class Statistics {
 
     public static void setAvgDoubleElements(double avgDoubleElements) {
         Statistics.avgDoubleElements = avgDoubleElements;
+    }
+
+    public static long getMaxLongElements() {
+        return maxLongElements;
+    }
+
+    public static void setMaxLongElements(long maxLongElements) {
+        Statistics.maxLongElements = maxLongElements;
+    }
+
+    public static long getMinLongElements() {
+        return minLongElements;
+    }
+
+    public static void setMinLongElements(long minLongElements) {
+        Statistics.minLongElements = minLongElements;
+    }
+
+    public static int getCountLongElements() {
+        return countLongElements;
+    }
+
+    public static void setCountLongElements(int countLongElements) {
+        Statistics.countLongElements = countLongElements;
     }
 }
