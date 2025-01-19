@@ -4,6 +4,8 @@ import ru.surikov.entities.Configuration;
 import ru.surikov.exceptions.PrefixNotFoundException;
 import ru.surikov.exceptions.SystemPathParamNotFound;
 
+import java.nio.file.Paths;
+
 public class ConfigurationSetController {
 
     public static void setConfig(String[] args, Configuration config) {
@@ -27,8 +29,8 @@ public class ConfigurationSetController {
                     }
                     if (args[i].contains("o")) {
                         config.setO(true);
-                        if (args[i + 1].contains("\\")) {
-                            config.setSavePath(args[i + 1]);
+                        if (args[i + 1].contains("\\")) {;
+                            config.setSavePath(Paths.get(args[i + 1]).toAbsolutePath().toString());
                         } else {
                             throw new SystemPathParamNotFound("System path param not found");
                         }
