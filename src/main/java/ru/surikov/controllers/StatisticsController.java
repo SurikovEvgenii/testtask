@@ -17,7 +17,7 @@ public class StatisticsController {
         }
     }
 
-    public static void setStatisctics(boolean shortStatistics, boolean fullStatistics) {
+    public static void setStatistics(boolean shortStatistics, boolean fullStatistics) {
         if (shortStatistics) {
             setShortStatistics();
         }
