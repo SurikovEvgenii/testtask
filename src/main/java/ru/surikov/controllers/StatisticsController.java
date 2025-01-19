@@ -7,52 +7,60 @@ import java.util.Comparator;
 
 public class StatisticsController {
 
-    public static void setShortStatistic() {
-        if (!DataLists.getLongList().isEmpty()) {
-            Statistics.setCountLongElements((int) DataLists.getLongList().stream().count());
+    public static void viewStatistics(boolean shortStatistics, boolean fullStatistics) {
+        if (shortStatistics) {
+            viewShortStatistics();
         }
-        if (!DataLists.getDoubleList().isEmpty()) {
-            Statistics.setCountDoubleElements((int) DataLists.getDoubleList().stream().count());
-        }
-        if (!DataLists.getStringList().isEmpty()) {
-            Statistics.setCountStringElements((int) DataLists.getStringList().stream().count());
+
+        if (fullStatistics) {
+            viewFullStatistics();
         }
     }
 
-    public static void setFullStatistic() {
+    public static void setStatisctics(boolean shortStatistics, boolean fullStatistics) {
+        if (shortStatistics) {
+            setShortStatistics();
+        }
+
+        if (fullStatistics) {
+            setFullStatistics();
+        }
+    }
+
+    public static void setShortStatistics() {
         if (!DataLists.getLongList().isEmpty()) {
-            Statistics.setCountLongElements((int) DataLists.getLongList().stream().count());
-            Statistics.setAvgLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).average().getAsDouble());
-            Statistics.setMaxLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).max().getAsLong());
-            Statistics.setMinLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).min().getAsLong());
+            Statistics.setCountLongElements(DataLists.getLongList().size());
         }
         if (!DataLists.getDoubleList().isEmpty()) {
-            Statistics.setCountDoubleElements((int) DataLists.getDoubleList().stream().count());
-            Statistics.setAvgDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).average().getAsDouble());
-            Statistics.setMaxDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).max().getAsDouble());
-            Statistics.setMinDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).min().getAsDouble());
+            Statistics.setCountDoubleElements(DataLists.getDoubleList().size());
         }
         if (!DataLists.getStringList().isEmpty()) {
-            Statistics.setCountStringElements((int) DataLists.getStringList().stream().count());
+            Statistics.setCountStringElements(DataLists.getStringList().size());
+        }
+    }
+
+    public static void setFullStatistics() {
+        if (!DataLists.getLongList().isEmpty()) {
+            Statistics.setCountLongElements(DataLists.getLongList().size());
+            Statistics.setAvgLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).average().orElseThrow());
+            Statistics.setMaxLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).max().orElseThrow());
+            Statistics.setMinLongElements(DataLists.getLongList().stream().mapToLong(Long::longValue).min().orElseThrow());
+        }
+        if (!DataLists.getDoubleList().isEmpty()) {
+            Statistics.setCountDoubleElements(DataLists.getDoubleList().size());
+            Statistics.setAvgDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).average().orElseThrow());
+            Statistics.setMaxDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).max().orElseThrow());
+            Statistics.setMinDoubleElements(DataLists.getDoubleList().stream().mapToDouble(Double::doubleValue).min().orElseThrow());
+        }
+        if (!DataLists.getStringList().isEmpty()) {
+            Statistics.setCountStringElements(DataLists.getStringList().size());
             Statistics.setMinStringLengthElements(DataLists.getStringList().stream().min(Comparator.comparingInt(String::length)).get().length());
             Statistics.setMaxStringLengthElements(DataLists.getStringList().stream().max(Comparator.comparingInt(String::length)).get().length());
         }
     }
 
-    public static void viewStatistics(boolean shortStatistics, boolean fullStatistics) {
-        if (shortStatistics) {
-            viewShortStatistic();
-        }
-
-        if (fullStatistics) {
-            viewFullStatistic();
-        }
-    }
-
-    public static void viewShortStatistic() {
-
+    public static void viewShortStatistics() {
         System.out.println("Short Statistic\n");
-
         if (!DataLists.getLongList().isEmpty()) {
             System.out.println("Count integer elements: " + Statistics.getCountLongElements());
         }
@@ -64,10 +72,8 @@ public class StatisticsController {
         }
     }
 
-    public static void viewFullStatistic() {
-
+    public static void viewFullStatistics() {
         System.out.println("Full Statistics:\n");
-
         if (!DataLists.getLongList().isEmpty()) {
             System.out.println("Count integer elements: " + Statistics.getCountLongElements());
             System.out.println("Max integer elements: " + Statistics.getMaxLongElements());
