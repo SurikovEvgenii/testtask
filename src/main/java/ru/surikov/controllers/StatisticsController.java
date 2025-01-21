@@ -60,37 +60,46 @@ public class StatisticsController {
     }
 
     public static void viewShortStatistics() {
-        System.out.println("Short Statistic\n");
-        if (!DataLists.getLongList().isEmpty()) {
-            System.out.println("Count integer elements: " + Statistics.getCountLongElements());
+        if(!DataLists.getLongList().isEmpty() || !DataLists.getDoubleList().isEmpty() || !DataLists.getStringList().isEmpty()) {
+            System.out.println("Short Statistic\n");
+            if (!DataLists.getLongList().isEmpty()) {
+                System.out.println("Count integer elements: " + Statistics.getCountLongElements());
+            }
+            if (!DataLists.getDoubleList().isEmpty()) {
+                System.out.println("Count double elements: " + Statistics.getCountDoubleElements());
+            }
+            if (!DataLists.getStringList().isEmpty()) {
+                System.out.println("Count String elements: " + Statistics.getCountStringElements());
+            }
+        } else {
+            System.out.println("Empty Lists!");
         }
-        if (!DataLists.getDoubleList().isEmpty()) {
-            System.out.println("Count double elements: " + Statistics.getCountDoubleElements());
-        }
-        if (!DataLists.getStringList().isEmpty()) {
-            System.out.println("Count String elements: " + Statistics.getCountStringElements());
-        }
+
     }
 
     public static void viewFullStatistics() {
-        System.out.println("Full Statistics:\n");
-        if (!DataLists.getLongList().isEmpty()) {
-            System.out.println("Count integer elements: " + Statistics.getCountLongElements());
-            System.out.println("Max integer elements: " + Statistics.getMaxLongElements());
-            System.out.println("Min integer elements: " + Statistics.getMinLongElements());
-            System.out.println("Avg integer elements: " + Statistics.getAvgLongElements());
+        if(!DataLists.getLongList().isEmpty() || !DataLists.getDoubleList().isEmpty() || !DataLists.getStringList().isEmpty()) {
+            System.out.println("Full Statistics:\n");
+            if (!DataLists.getLongList().isEmpty()) {
+                System.out.println("Count integer elements: " + Statistics.getCountLongElements());
+                System.out.println("Max integer elements: " + Statistics.getMaxLongElements());
+                System.out.println("Min integer elements: " + Statistics.getMinLongElements());
+                System.out.println("Avg integer elements: " + Statistics.getAvgLongElements());
+            }
+            if (!DataLists.getDoubleList().isEmpty()) {
+                System.out.println("\nCount double elements: " + Statistics.getCountDoubleElements());
+                System.out.println("Max double elements: " + Statistics.getMaxDoubleElements());
+                System.out.println("Min double elements: " + Statistics.getMinDoubleElements());
+                System.out.println("Avg double elements: " + Statistics.getAvgDoubleElements());
+            }
+            if (!DataLists.getStringList().isEmpty()) {
+                System.out.println("\nCount String elements :" + Statistics.getCountStringElements());
+                System.out.println("Max lenght string :" + Statistics.getMaxStringLengthElements());
+                System.out.println("Min lenght string :" + Statistics.getMinStringLengthElements());
+            }
+        } else {
+            System.out.println("Empty Lists!");
         }
-        if (!DataLists.getDoubleList().isEmpty()) {
-            System.out.println("\nCount double elements: " + Statistics.getCountDoubleElements());
-            System.out.println("Max double elements: " + Statistics.getMaxDoubleElements());
-            System.out.println("Min double elements: " + Statistics.getMinDoubleElements());
-            System.out.println("Avg double elements: " + Statistics.getAvgDoubleElements());
-        }
-        if (!DataLists.getStringList().isEmpty()) {
-            System.out.println("\nCount String elements :" + Statistics.getCountStringElements());
-            System.out.println("Max lenght string :" + Statistics.getMaxStringLengthElements());
-            System.out.println("Min lenght string :" + Statistics.getMinStringLengthElements());
-        }
-    }
 
+    }
 }
