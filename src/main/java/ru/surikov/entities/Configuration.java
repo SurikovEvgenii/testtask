@@ -12,18 +12,11 @@ public class Configuration {
     private static boolean f;
     private static String savePath;
     private static String prefix;
-    private static List<String> listFileName;
+    private static List<String> listInputFilePath;
     private static Configuration instance;
 
     public Configuration() {
-        listFileName = new ArrayList<>();
-    }
-
-    public static Configuration getInstance() {
-        if (instance == null) {
-            instance = new Configuration();
-        }
-        return instance;
+        listInputFilePath = new ArrayList<>();
     }
 
     public boolean getA() {
@@ -75,11 +68,11 @@ public class Configuration {
     }
 
     public List<String> getListOfFileName() {
-        return listFileName;
+        return listInputFilePath;
     }
 
     public void addFileName(String fileName) {
-        listFileName.add(fileName);
+        listInputFilePath.add(fileName);
     }
 
     public String getPrefix() {
@@ -100,7 +93,7 @@ public class Configuration {
                 ", f=" + f +
                 ", savePath='" + savePath + '\'' +
                 ", prefix='" + prefix + '\'' +
-                ", listFileName=" + listFileName +
+                ", listInputFilePath=" + listInputFilePath +
                 '}';
     }
 }
