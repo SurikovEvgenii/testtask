@@ -13,7 +13,6 @@ public class Configuration {
     private static String savePath;
     private static String prefix;
     private static List<String> listInputFilePath;
-    private static Configuration instance;
 
     public Configuration() {
         listInputFilePath = new ArrayList<>();
