@@ -66,7 +66,7 @@ public class ConfigurationSetControllerTest {
     }
 
     @Test
-    @DisplayName("Test prefix \" \"")
+    @DisplayName("Test prefix \"\"")
     public void testConfigurationSetFour() {
         Configuration configurationTwo = new Configuration();
         String[] args = {"-s", "-f", "-p", "", "-o", "test\\output", "in1.txt"};
